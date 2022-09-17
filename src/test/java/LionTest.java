@@ -18,9 +18,10 @@ public class LionTest {
     Feline feline;
 
     @Test(expected = Exception.class)
-    public void invalidLionSexTest() {
-      try { Lion lion = new Lion("Undefined", feline);}
-      catch (Exception e) {throw new RuntimeException(e);}
+    public void invalidLionSexTest() throws Exception {
+        String actual = String.valueOf(Mockito.when(new Lion("Undefined", feline)).thenThrow(new Exception("Используйте допустимые значения пола животного - самей или самка")));
+        assertEquals("Используйте допустимые значения пола животного - самей или самка", actual);
+
     }
 
     @Test

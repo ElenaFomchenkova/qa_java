@@ -20,14 +20,12 @@ public class CatTest {
 
     }
 
-    @Test
+    @Test(expected = Exception.class)
     public void testCatMethodGetFoodException() throws Exception {
-        try {
-            Cat cat = new Cat(feline);
-            Mockito.when(feline.eatMeat()).thenThrow(new Exception("Неизвестный вид животного, используйте значение Травоядное или Хищник"));
-            cat.getFood();
-        } catch (Exception exception) {
-            assertEquals("Неизвестный вид животного, используйте значение Травоядное или Хищник", exception.getMessage());
-        }
+        Cat cat = new Cat(feline);
+        String actual = String.valueOf(Mockito.when(feline.eatMeat()).thenThrow(new Exception("Неизвестный вид животного, используйте значение Травоядное или Хищник")));
+        cat.getFood();
+        assertEquals("Неизвестный вид животного, используйте значение Травоядное или Хищник", actual);
     }
+    //убрала try catch
 }

@@ -7,9 +7,10 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class FelineTest {
-    Feline feline = new Feline();
+
     @Test
     public void eatMeatShouldReturnPredatorFoodTest() throws Exception {
+        Feline feline = new Feline();
         Feline feline1 = Mockito.spy(feline);
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
         Mockito.when(feline1.getFood("Хищник")).thenReturn(expected);
@@ -19,11 +20,13 @@ public class FelineTest {
 
     @Test
     public void getKittensTest() {
+        Feline feline = new Feline();
         assertEquals(1, feline.getKittens());
     }
 
     @Test
     public void getFamilyTest() {
+        Feline feline = new Feline();
         assertEquals("Кошачьи", feline.getFamily());
     }
 }
